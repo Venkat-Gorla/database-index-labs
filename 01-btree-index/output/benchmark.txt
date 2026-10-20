@@ -20,3 +20,25 @@ Matching orders:
 ('ORD-107', 'CUST-007', '2025-01-30T19:15:00', 'cancelled', 'USB-C charging cable - order 107', 385.78)
 ('ORD-062', 'CUST-007', '2025-01-11T12:12:00', 'shipped', 'Blue running shoes - order 062', 183.3)
 ('ORD-003', 'CUST-007', '2025-01-08T03:11:00', 'shipped', 'Desk lamp - order 003', 304.99)
+
+- After the index is created
+> uv run code/benchmark.py
+Customer: CUST-007
+Matching orders: 12
+
+Query plan:
+(4, 0, 62, 'SEARCH orders USING INDEX idx_orders_customer_created (customer_id=?)')
+
+Matching orders:
+('ORD-126', 'CUST-007', '2025-06-26T06:19:00', 'shipped', 'Travel backpack - order 126', 145.48)
+('ORD-085', 'CUST-007', '2025-06-11T19:38:00', 'cancelled', 'Travel backpack - order 085', 205.83)
+('ORD-141', 'CUST-007', '2025-06-10T20:07:00', 'cancelled', 'Blue running shoes - order 141', 276.84)
+('ORD-074', 'CUST-007', '2025-05-18T23:26:00', 'delivered', 'Laptop stand - order 074', 44.29)
+('ORD-095', 'CUST-007', '2025-04-17T02:07:00', 'cancelled', 'Laptop stand - order 095', 453.37)
+('ORD-110', 'CUST-007', '2025-04-07T13:32:00', 'pending', 'Notebook set - order 110', 348.4)
+('ORD-009', 'CUST-007', '2025-04-03T19:42:00', 'pending', 'Wireless keyboard - order 009', 334.02)
+('ORD-185', 'CUST-007', '2025-04-01T07:28:00', 'delivered', 'Stainless steel bottle - order 185', 317.84)
+('ORD-125', 'CUST-007', '2025-03-01T04:07:00', 'delivered', 'Blue running shoes - order 125', 374.01)
+('ORD-107', 'CUST-007', '2025-01-30T19:15:00', 'cancelled', 'USB-C charging cable - order 107', 385.78)
+('ORD-062', 'CUST-007', '2025-01-11T12:12:00', 'shipped', 'Blue running shoes - order 062', 183.3)
+('ORD-003', 'CUST-007', '2025-01-08T03:11:00', 'shipped', 'Desk lamp - order 003', 304.99)

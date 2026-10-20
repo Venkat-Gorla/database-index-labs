@@ -29,8 +29,8 @@ def main():
 
     print(f"Customer: {CUSTOMER_ID}")
     print(f"Matching orders: {len(orders)}")
-    print("\nQuery plan:")
 
+    print("\nQuery plan:")
     for row in plan:
         print(row)
 

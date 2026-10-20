@@ -1,0 +1,4 @@
+uv run python -c "import sqlite3; c=sqlite3.connect('orders.db'); c.execute('CREATE INDEX idx_orders_customer_created ON orders (customer_id, created_at DESC)'); c.commit(); c.close()"
+
+uv run python -c "import sqlite3; c=sqlite3.connect('orders.db'); c.execute('DROP INDEX idx_orders_customer_created'); c.commit(); c.close()"
+
