@@ -3,8 +3,8 @@ uv run code/generate_data.py
 uv run code/generate_data.py 10000
 """
 
-import sys
 from pathlib import Path
+import argparse
 from index_core import generate_data
 from getpass import getpass
 import psycopg
@@ -20,23 +20,27 @@ DB_CONFIG = {
 }
 
 
-def get_row_count() -> int:
-    if len(sys.argv) > 2:
-        raise SystemExit("Usage: uv run code/generate_data.py [row_count]")
-
-    try:
-        row_count = int(sys.argv[1]) if len(sys.argv) == 2 else 200
-    except ValueError:
-        raise SystemExit("row_count must be a positive integer")
-
-    if row_count <= 0:
-        raise SystemExit("row_count must be a positive integer")
-
-    return row_count
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Generate and load synthetic orders into PostgreSQL."
+    )
+    parser.add_argument(
+        "row_count",
+        nargs="?",
+        type=int,
+        default=200,
+        help="Number of orders to generate (default: 200)",
+    )
+    return parser.parse_args()
 
 
 def main():
-    row_count = get_row_count()
+    args = parse_args()
+    if args.row_count <= 0:
+        raise SystemExit("row_count must be a positive integer")
+
+    row_count = args.row_count
+
     schema = SCHEMA_PATH.read_text(encoding="utf-8")
     orders = generate_data(order_count=row_count)
 
