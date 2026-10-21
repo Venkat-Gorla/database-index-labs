@@ -1,5 +1,5 @@
 
-CREATE TABLE orders (
+CREATE TABLE IF NOT EXISTS orders (
     order_id      TEXT PRIMARY KEY,
     customer_id   TEXT NOT NULL,
     created_at    TIMESTAMP NOT NULL,
