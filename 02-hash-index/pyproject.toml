@@ -1,9 +1,13 @@
 [project]
 name = "02-hash-index"
 version = "0.1.0"
-description = "Add your description here"
+description = "Explore PostgreSQL hash indexes"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "index-core",
     "psycopg[binary]>=3.3.6",
 ]
+
+[tool.uv.sources]
+index-core = { path = "../core", editable = true }
