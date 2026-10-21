@@ -7,7 +7,7 @@ RANDOM_SEED = 42
 
 STATUSES = ("pending", "shipped", "delivered", "cancelled")
 
-PRODUCTS = [
+PRODUCTS = (
     "Wireless keyboard",
     "Blue running shoes",
     "Stainless steel bottle",
@@ -18,7 +18,7 @@ PRODUCTS = [
     "Travel backpack",
     "Desk lamp",
     "Notebook set",
-]
+)
 
 
 def generate_data(
