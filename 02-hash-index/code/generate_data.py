@@ -7,6 +7,9 @@ from index_core import generate_data
 from getpass import getpass
 import psycopg
 
+ROOT = Path(__file__).resolve().parent.parent
+SCHEMA_PATH = ROOT / "schema.sql"
+
 DB_CONFIG = {
     "host": "localhost",
     "port": 5432,
@@ -16,8 +19,7 @@ DB_CONFIG = {
 
 
 def main():
-    schema_path = Path(__file__).resolve().parent.parent / "schema.sql"
-    schema = schema_path.read_text(encoding="utf-8")
+    schema = SCHEMA_PATH.read_text(encoding="utf-8")
     orders = generate_data()
 
     password = getpass("PostgreSQL password: ")
