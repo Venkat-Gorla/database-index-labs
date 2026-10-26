@@ -49,7 +49,6 @@ Both indexes support this equality lookup. PostgreSQL's planner chooses a query 
 | Actual rows returned      |          526 |      526 |
 | Estimated rows            |          526 |      526 |
 | Index scan time           |     0.085 ms | 0.066 ms |
-| Heap blocks accessed      |          132 |      132 |
 | Shared buffer hits        |          132 |      136 |
 | Shared buffer reads       |            2 |        0 |
 | Estimated total plan cost |       152.94 |   168.65 |
@@ -86,8 +85,6 @@ This is a useful proof of concept demonstrating index selection and execution-pl
 - Results may vary with caching, system activity, and data distribution.
 - The experiment used a small synthetic dataset and one equality predicate.
 - Execution times are sub-millisecond, so individual measurements are sensitive to measurement conditions.
-
-The goal of this lab was to understand index behavior and learn to interpret query plans—not to establish a universal performance ranking.
 
 ## 6. Reproduction
 
