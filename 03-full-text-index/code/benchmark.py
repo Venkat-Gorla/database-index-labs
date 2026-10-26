@@ -16,12 +16,20 @@ WHERE description LIKE ?
 
 SEARCH_PATTERN = "%keyboard%"
 
+FTS_QUERY = """
+SELECT rowid, description
+FROM orders_fts
+WHERE orders_fts MATCH ?
+"""
+
+FTS_SEARCH_TERM = "keyboard"
+
 
 def main():
     with sqlite3.connect(DB_PATH) as conn:
         orders = conn.execute(QUERY, (SEARCH_PATTERN,)).fetchall()
 
-        plan = conn.execute(
+        baseline_plan = conn.execute(
             f"EXPLAIN QUERY PLAN {QUERY}",
             (SEARCH_PATTERN,),
         ).fetchall()
@@ -33,7 +41,7 @@ def main():
         print(row)
 
     print("\nQuery plan:")
-    for row in plan:
+    for row in baseline_plan:
         print(row)
 
 
