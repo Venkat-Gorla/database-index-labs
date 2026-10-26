@@ -1,4 +1,5 @@
 """
+uv run code/benchmark.py
 """
 
 from pathlib import Path
@@ -10,16 +11,19 @@ DB_PATH = ROOT / "orders.db"
 QUERY = """
 SELECT order_id, description
 FROM orders
-WHERE description LIKE '%keyboard%'
+WHERE description LIKE ?
 """
+
+SEARCH_PATTERN = "%keyboard%"
 
 
 def main():
     with sqlite3.connect(DB_PATH) as conn:
-        orders = conn.execute(QUERY).fetchall()
+        orders = conn.execute(QUERY, (SEARCH_PATTERN,)).fetchall()
 
         plan = conn.execute(
-            "EXPLAIN QUERY PLAN " + QUERY
+            f"EXPLAIN QUERY PLAN {QUERY}",
+            (SEARCH_PATTERN,),
         ).fetchall()
 
     print(f"Matching rows: {len(orders)}")
