@@ -14,7 +14,7 @@ FROM orders
 WHERE description LIKE ?
 """
 
-SEARCH_PATTERN = "%keyboard%"
+SEARCH_PATTERN = "%board%"
 
 FTS_QUERY = """
 SELECT rowid, description
@@ -22,10 +22,11 @@ FROM orders_fts
 WHERE orders_fts MATCH ?
 """
 
-FTS_SEARCH_TERM = "keyboard"
+FTS_SEARCH_TERM = "board"
 
 
 def print_baseline_results(orders, baseline_plan):
+    print(f"Baseline search pattern: {SEARCH_PATTERN!r}")
     print(f"Baseline matching rows: {len(orders)}")
 
     print("\nBaseline query results:")
@@ -39,6 +40,7 @@ def print_baseline_results(orders, baseline_plan):
 
 def print_fts_results(fts_orders, fts_plan):
     print("\n" + "-" * 30)
+    print(f"FTS search term: {FTS_SEARCH_TERM!r}")
     print(f"FTS matching rows: {len(fts_orders)}")
 
     print("\nFTS query results:")
