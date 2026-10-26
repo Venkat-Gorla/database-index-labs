@@ -53,7 +53,7 @@ Both indexes support this equality lookup. PostgreSQL's planner chooses a query 
 | Shared buffer reads       |            2 |        0 |
 | Estimated total plan cost |       152.94 |   168.65 |
 
-_Measurements are from one execution per index configuration. Buffer figures are reported as PostgreSQL displayed them in each plan._
+_Measurements are from one execution per index configuration._
 
 ### Query plan shape
 
@@ -69,9 +69,8 @@ Both plans used a bitmap index scan to locate matching rows, followed by a bitma
 
 1. **Both index types support equality lookups.** PostgreSQL successfully used the B-tree and hash indexes for the same predicate.
 2. **Creating an index does not guarantee its selection.** When both indexes were available, PostgreSQL chose the B-tree-based plan because its estimated cost was lower.
-3. **Hash indexes have a narrower use case.** They support equality comparisons, while B-tree indexes also support range predicates and ordered retrieval.
-4. **Index lookup time is not total query time.** Fetching the matching table rows also contributes to execution time.
-5. **Measure actual execution, not just estimates.** `EXPLAIN (ANALYZE, BUFFERS)` provided observed timings and buffer activity in addition to the planner's estimates.
+3. **Index lookup time is not total query time.** Fetching the matching table rows also contributes to execution time.
+4. **Measure actual execution, not just estimates.** `EXPLAIN (ANALYZE, BUFFERS)` provided observed timings and buffer activity in addition to the planner's estimates.
 
 ## 5. Conclusion
 
