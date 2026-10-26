@@ -66,14 +66,6 @@ _Measurements are from one execution per index configuration. Buffer figures are
 
 Both plans used a bitmap index scan to locate matching rows, followed by a bitmap heap scan to retrieve the table data.
 
-### Observations
-
-- **Execution time:** The B-tree run took 0.380 ms, compared with 0.512 ms for the hash run. In these individual runs, B-tree completed approximately 26% faster.
-- **Index access:** The hash index scan took 0.066 ms, compared with 0.085 ms for B-tree. Despite its lower index-scan time, the hash run had the higher total execution time.
-- **Table access:** Both plans accessed 132 heap blocks. Retrieving the matching table rows was a substantial part of the work.
-- **Planner estimates:** PostgreSQL estimated the B-tree plan's total cost at 152.94 and the hash plan's at 168.65. These are planner cost units, not milliseconds.
-- **Row estimates:** Both plans estimated 526 matching rows, exactly matching the observed count.
-
 ## 4. Key Learnings
 
 1. **Both index types support equality lookups.** PostgreSQL successfully used the B-tree and hash indexes for the same predicate.
