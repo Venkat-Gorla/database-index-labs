@@ -22,4 +22,4 @@
        Check descriptions    Locate matches
 ```
 
-> Explore full-text search with SQLite FTS5 and understand the inverted-index concepts behind OpenSearch.
+> Explore full-text search with SQLite FTS5.
