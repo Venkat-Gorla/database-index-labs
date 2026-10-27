@@ -1,0 +1,8 @@
+> uv run code/scan_orders.py
+
+Customer: CUST-015
+Pages read: 1
+Matching orders: 43
+Orders scanned: 500
+Consumed capacity: 8.5
+
