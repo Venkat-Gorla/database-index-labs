@@ -1,0 +1,8 @@
+> uv run code/query_gsi.py
+
+Customer: CUST-015
+Pages read: 1
+Matching orders: 43
+Orders evaluated: 43
+Consumed capacity: 1.0
+
