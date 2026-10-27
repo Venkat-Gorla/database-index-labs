@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: database index lab 04 - DynamoDB GSI
+
+Parameters:
+  ProjectPrefix:
+    Type: String
+    Default: database-index-lab
+
+Resources:
+  OrdersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "${ProjectPrefix}-orders-gsi"
+      BillingMode: PAY_PER_REQUEST
+
+      AttributeDefinitions:
+        - AttributeName: order_id
+          AttributeType: S
+        - AttributeName: customer_id
+          AttributeType: S
+        - AttributeName: created_at
+          AttributeType: S
+
+      KeySchema:
+        - AttributeName: order_id
+          KeyType: HASH
+
+      GlobalSecondaryIndexes:
+        - IndexName: customer-orders-index
+          KeySchema:
+            - AttributeName: customer_id
+              KeyType: HASH
+            - AttributeName: created_at
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+
+Outputs:
+  OrdersTableName:
+    Description: Orders DynamoDB table name
+    Value: !Ref OrdersTable
