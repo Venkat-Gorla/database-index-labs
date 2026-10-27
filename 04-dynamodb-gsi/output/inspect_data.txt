@@ -1,0 +1,13 @@
+> uv run code/inspect_data.py
+
+Total orders: 500
+Distinct customers: 20
+Average orders per customer: 25.0
+
+Top 5 customers by order count:
+CUST-015: 43 orders
+CUST-018: 29 orders
+CUST-009: 29 orders
+CUST-003: 28 orders
+CUST-019: 28 orders
+
