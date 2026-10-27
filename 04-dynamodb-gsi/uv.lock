@@ -1,0 +1,19 @@
+version = 1
+revision = 3
+requires-python = ">=3.12"
+
+[[package]]
+name = "04-dynamodb-gsi"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "index-core" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "index-core", editable = "../core" }]
+
+[[package]]
+name = "index-core"
+version = "0.1.0"
+source = { editable = "../core" }
