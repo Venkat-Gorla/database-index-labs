@@ -3,8 +3,10 @@ uv run code/data_generator.py
 """
 
 from datetime import datetime, timedelta, timezone
-from collections import Counter
 import ulid
+from sample_data_output import (
+    print_summary,
+)
 
 BASE_TIME = datetime(2026, 10, 31, 8, 0, tzinfo=timezone.utc)
 INTERVAL_MINUTES = 30
@@ -151,24 +153,6 @@ def generate_comments() -> list[dict]:
     return comments
 
 
-def print_summary(comments):
-    print(f"\nTotal comments generated: {len(comments)}")
-
-    for video_id in VIDEO_TREES:
-        video_comments = [
-            item for item in comments
-            if item["VideoId"] == f"VIDEO#{video_id}"
-        ]
-
-        depth_counts = Counter(
-            item["Depth"] for item in video_comments
-        )
-
-        print(f"\n{video_id}: {len(video_comments)} comments")
-        for depth, count in sorted(depth_counts.items()):
-            print(f"  Depth {depth}: {count}")
-
-
 if __name__ == "__main__":
     comments = generate_comments()
 
@@ -182,4 +166,4 @@ if __name__ == "__main__":
         ]
         assert len(video_items) == 25
 
-    print_summary(comments)
+    print_summary(VIDEO_TREES, comments)
