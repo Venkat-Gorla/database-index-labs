@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: database index lab 05 - Video Comments
+
+Parameters:
+  ProjectPrefix:
+    Type: String
+    Default: database-index-lab
+
+Resources:
+  VideoCommentsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "${ProjectPrefix}-video-comments"
+      BillingMode: PAY_PER_REQUEST
+
+      AttributeDefinitions:
+        - AttributeName: VideoId
+          AttributeType: S
+        - AttributeName: CommentId
+          AttributeType: S
+        - AttributeName: VideoIdDepth
+          AttributeType: S
+        - AttributeName: ParentId
+          AttributeType: S
+
+      KeySchema:
+        - AttributeName: VideoId
+          KeyType: HASH
+        - AttributeName: CommentId
+          KeyType: RANGE
+
+      GlobalSecondaryIndexes:
+        - IndexName: VideoDepthIndex
+          KeySchema:
+            - AttributeName: VideoIdDepth
+              KeyType: HASH
+            - AttributeName: CommentId
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+
+        - IndexName: ParentCommentIndex
+          KeySchema:
+            - AttributeName: ParentId
+              KeyType: HASH
+            - AttributeName: CommentId
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+
+Outputs:
+  VideoCommentsTableName:
+    Description: DynamoDB table name
+    Value: !Ref VideoCommentsTable
