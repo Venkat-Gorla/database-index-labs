@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 import ulid
 from sample_data_output import (
     print_summary,
+    print_comment_tree,
 )
 
 BASE_TIME = datetime(2026, 10, 31, 8, 0, tzinfo=timezone.utc)
@@ -115,6 +116,7 @@ def generate_comments() -> list[dict]:
             "RootId": current_root_id,
             "Depth": depth,
             "CreatedAt": comment_time.strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "Label": spec["label"],
             "Text": f"Sample comment {spec['label']} on {video_id}",
             "LikeCount": (sequence * 7) % 100,
             "ReplyCount": len(spec["replies"]),
@@ -167,3 +169,4 @@ if __name__ == "__main__":
         assert len(video_items) == 25
 
     print_summary(VIDEO_TREES, comments)
+    print_comment_tree(comments, "V001")
