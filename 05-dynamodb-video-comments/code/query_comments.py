@@ -12,15 +12,20 @@ table = dynamodb.Table(TABLE_NAME)
 
 
 def get_root_comments(video_id, exclusive_start_key=None):
-    response = table.query(
-        IndexName="VideoDepthIndex",
-        KeyConditionExpression="VideoIdDepth = :partition_key",
-        ExpressionAttributeValues={
+    query_kwargs = {
+        "IndexName": "VideoDepthIndex",
+        "KeyConditionExpression": "VideoIdDepth = :partition_key",
+        "ExpressionAttributeValues": {
             ":partition_key": f"VIDEO#{video_id}#DEPTH#000"
         },
-        ScanIndexForward=False,
-        Limit=PAGE_SIZE,
-    )
+        "ScanIndexForward": False,
+        "Limit": PAGE_SIZE,
+    }
+
+    if exclusive_start_key:
+        query_kwargs["ExclusiveStartKey"] = exclusive_start_key
+
+    response = table.query(**query_kwargs)
 
     return {
         "items": response.get("Items", []),
