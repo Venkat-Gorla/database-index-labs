@@ -25,14 +25,15 @@ def get_replies(parent_id):
 
 
 if __name__ == "__main__":
-    parent_ids = [
-        # Test 1: Root comment with multiple direct replies
-        "01M68FJ0000000000000000000",
+    test_cases = {
+        # Root comment with multiple direct replies
+        "Test 1 - Root comment R01": "01M68FJ0000000000000000000",
 
-        # Test 2: Nested comment with a direct reply
-        "01M68JZVM00000000000000002",
-    ]
+        # Nested comment with a direct reply
+        "Test 2 - Nested comment R01-B": "01M68JZVM00000000000000002",
+    }
 
-    for parent_id in parent_ids:
+    for description, parent_id in test_cases.items():
+        print(f"\n{description}")
         replies = get_replies(parent_id)
-        print_replies(parent_id, items=replies,)
+        print_replies(parent_id, items=replies)

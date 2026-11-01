@@ -23,7 +23,7 @@ def print_root_comments(video_id, items, page_number, has_more):
 
 
 def print_replies(parent_id, items):
-    print(f"\nReplies for parent: {parent_id}")
+    print(f"Replies for parent: {parent_id}")
     print("-" * 60)
 
     for item in items:
