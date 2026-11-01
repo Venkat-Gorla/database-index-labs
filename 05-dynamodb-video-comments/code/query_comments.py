@@ -3,6 +3,9 @@ uv run code/query_comments.py
 """
 
 import boto3
+from aws_output import (
+    print_root_comments,
+)
 
 TABLE_NAME = "database-index-lab-video-comments"
 PAGE_SIZE = 5
@@ -34,18 +37,12 @@ def get_root_comments(video_id, exclusive_start_key=None):
 
 
 if __name__ == "__main__":
-    result = get_root_comments("V001")
+    video_id = "V001"
+    result = get_root_comments(video_id)
 
-    print("\nVideo V001 - Root Comments")
-    print("-" * 40)
-
-    for item in result["items"]:
-        print(
-            f"{item['Text']} "
-            f"[CreatedAt={item['CreatedAt']}, "
-            f"Depth={item['Depth']}, "
-            f"Replies={item['ReplyCount']}]"
-        )
-
-    print(f"\nItems returned: {len(result['items'])}")
-    print(f"More pages available: {result['last_evaluated_key'] is not None}")
+    print_root_comments(
+        video_id=video_id,
+        items=result["items"],
+        page_number=1,
+        has_more=result["last_evaluated_key"] is not None,
+    )
