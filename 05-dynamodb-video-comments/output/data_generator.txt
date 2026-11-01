@@ -1,0 +1,43 @@
+> uv run code/data_generator.py
+
+Total comments generated: 50
+
+V001: 25 comments
+  Depth 0: 8
+  Depth 1: 12
+  Depth 2: 4
+  Depth 3: 1
+
+V002: 25 comments
+  Depth 0: 8
+  Depth 1: 12
+  Depth 2: 5
+
+Video V001 Comments Tree
+------------------------------
+R01 [Depth=0, Replies=7]
+  R01-A [Depth=1, Replies=0]
+  R01-B [Depth=1, Replies=1]
+    R01-B1 [Depth=2, Replies=1]
+      R01-B1a [Depth=3, Replies=0]
+  R01-C [Depth=1, Replies=0]
+  R01-D [Depth=1, Replies=0]
+  R01-E [Depth=1, Replies=0]
+  R01-F [Depth=1, Replies=0]
+  R01-G [Depth=1, Replies=0]
+R02 [Depth=0, Replies=2]
+  R02-A [Depth=1, Replies=2]
+    R02-A1 [Depth=2, Replies=0]
+    R02-A2 [Depth=2, Replies=0]
+  R02-B [Depth=1, Replies=0]
+R03 [Depth=0, Replies=1]
+  R03-A [Depth=1, Replies=1]
+    R03-A1 [Depth=2, Replies=0]
+R04 [Depth=0, Replies=1]
+  R04-A [Depth=1, Replies=0]
+R05 [Depth=0, Replies=1]
+  R05-A [Depth=1, Replies=0]
+R06 [Depth=0, Replies=0]
+R07 [Depth=0, Replies=0]
+R08 [Depth=0, Replies=0]
+
