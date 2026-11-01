@@ -1,0 +1,22 @@
+> uv run code/query_replies.py
+
+Test 1 - Root comment R01
+Replies for parent: 01M68FJ0000000000000000000
+------------------------------------------------------------
+Sample comment R01-G on V001 [CreatedAt=31 Oct 2026, 12:30 PM UTC, Depth=1]
+Sample comment R01-F on V001 [CreatedAt=31 Oct 2026, 12:00 PM UTC, Depth=1]
+Sample comment R01-E on V001 [CreatedAt=31 Oct 2026, 11:30 AM UTC, Depth=1]
+Sample comment R01-D on V001 [CreatedAt=31 Oct 2026, 11:00 AM UTC, Depth=1]
+Sample comment R01-C on V001 [CreatedAt=31 Oct 2026, 10:30 AM UTC, Depth=1]
+Sample comment R01-B on V001 [CreatedAt=31 Oct 2026, 09:00 AM UTC, Depth=1]
+Sample comment R01-A on V001 [CreatedAt=31 Oct 2026, 08:30 AM UTC, Depth=1]
+
+Replies returned: 7
+
+Test 2 - Nested comment R01-B
+Replies for parent: 01M68JZVM00000000000000002
+------------------------------------------------------------
+Sample comment R01-B1 on V001 [CreatedAt=31 Oct 2026, 09:30 AM UTC, Depth=2]
+
+Replies returned: 1
+
