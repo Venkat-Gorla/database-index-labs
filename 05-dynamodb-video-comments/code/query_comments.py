@@ -38,11 +38,26 @@ def get_root_comments(video_id, exclusive_start_key=None):
 
 if __name__ == "__main__":
     video_id = "V001"
-    result = get_root_comments(video_id)
+    exclusive_start_key = None
+    page_number = 1
 
-    print_root_comments(
-        video_id=video_id,
-        items=result["items"],
-        page_number=1,
-        has_more=result["last_evaluated_key"] is not None,
-    )
+    while True:
+        result = get_root_comments(
+            video_id,
+            exclusive_start_key=exclusive_start_key,
+        )
+
+        last_evaluated_key = result["last_evaluated_key"]
+
+        print_root_comments(
+            video_id=video_id,
+            items=result["items"],
+            page_number=page_number,
+            has_more=last_evaluated_key is not None,
+        )
+
+        if not last_evaluated_key:
+            break
+
+        exclusive_start_key = last_evaluated_key
+        page_number += 1
