@@ -1,5 +1,5 @@
 """
-uv run code/query_comments.py
+uv run code/query_root_comments.py
 """
 
 import boto3
