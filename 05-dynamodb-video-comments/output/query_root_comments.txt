@@ -1,0 +1,22 @@
+> uv run code/query_root_comments.py
+
+Video V001 - Root Comments (Page 1)
+----------------------------------------
+Sample comment R08 on V001 [CreatedAt=31 Oct 2026, 08:00 PM UTC, Depth=0, Replies=0]
+Sample comment R07 on V001 [CreatedAt=31 Oct 2026, 07:30 PM UTC, Depth=0, Replies=0]
+Sample comment R06 on V001 [CreatedAt=31 Oct 2026, 07:00 PM UTC, Depth=0, Replies=0]
+Sample comment R05 on V001 [CreatedAt=31 Oct 2026, 06:00 PM UTC, Depth=0, Replies=1]
+Sample comment R04 on V001 [CreatedAt=31 Oct 2026, 05:00 PM UTC, Depth=0, Replies=1]
+
+Items returned: 5
+More pages available: True
+
+Video V001 - Root Comments (Page 2)
+----------------------------------------
+Sample comment R03 on V001 [CreatedAt=31 Oct 2026, 03:30 PM UTC, Depth=0, Replies=1]
+Sample comment R02 on V001 [CreatedAt=31 Oct 2026, 01:00 PM UTC, Depth=0, Replies=2]
+Sample comment R01 on V001 [CreatedAt=31 Oct 2026, 08:00 AM UTC, Depth=0, Replies=7]
+
+Items returned: 3
+More pages available: False
+
