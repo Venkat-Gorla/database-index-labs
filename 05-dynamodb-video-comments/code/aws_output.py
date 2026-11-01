@@ -20,3 +20,17 @@ def print_root_comments(video_id, items, page_number, has_more):
 
     print(f"\nItems returned: {len(items)}")
     print(f"More pages available: {has_more}")
+
+
+def print_replies(parent_id, items):
+    print(f"\nReplies for parent: {parent_id}")
+    print("-" * 40)
+
+    for item in items:
+        print(
+            f"{item['Text']} "
+            f"[CreatedAt={format_created_at(item['CreatedAt'])}, "
+            f"Depth={item['Depth']}]"
+        )
+
+    print(f"\nReplies returned: {len(items)}")
